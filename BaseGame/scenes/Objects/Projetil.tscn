@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://di82e63mcqs6j"]
+
+[ext_resource type="Script" uid="uid://bja81yofae3rd" path="res://BaseGame/scripts/projetil.gd" id="1_0x1j3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_capps"]
+
+[node name="Area2D" type="Area2D" unique_id=962626050]
+script = ExtResource("1_0x1j3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2079720733]
+shape = SubResource("RectangleShape2D_capps")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=97332158]

@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://j1t1nwjj4sd1" path="res://BaseGame/scenes/player.tscn" id="1_6nyjo"]
 [ext_resource type="Texture2D" uid="uid://bvfol0nlqtifu" path="res://BaseGame/assets/sprites/fHE4AU.png" id="2_0lfi1"]
+[ext_resource type="PackedScene" uid="uid://di82e63mcqs6j" path="res://BaseGame/scenes/Objects/Projetil.tscn" id="3_bjq8p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bjq8p"]
 texture = ExtResource("2_0lfi1")
@@ -56,5 +57,9 @@ tile_set = SubResource("TileSet_0p3oe")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=1729807555]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAD8//3/AAAAAAcAAAD8//z/AAAAAAYAAAD8//v/AAAAAAIAAAD8//r/AAAAAAIAAAD8//n/AAAAAAAAAAD9//n/AAACAAAAAAD+//n/AAACAAAAAAD///n/AAACAAAAAAAAAPr/AAAFAAIAAAAAAPv/AAAFAAIAAAAAAPn/AAAFAAAAAAAAAP3/AAAFAAcAAAAAAPz/AAAFAAYAAAD+//3/AAACAAcAAAD9//3/AAACAAcAAAD///3/AAACAAcAAAD+//v/AAACAAMAAAD+//r/AAACAAMAAAD9//r/AAACAAMAAAD9//v/AAACAAMAAAD9//z/AAACAAMAAAD+//z/AAACAAMAAAD///z/AAACAAMAAAD///v/AAACAAMAAAD///r/AAACAAMAAAA=")
+tile_map_data = PackedByteArray("AAD8//3/AAAAAAcAAAD8//z/AAAAAAYAAAD8//v/AAAAAAIAAAD8//r/AAAAAAIAAAD8//n/AAAAAAAAAAD9//n/AAACAAAAAAD+//n/AAACAAAAAAD///n/AAACAAAAAAAAAPr/AAAFAAIAAAAAAPv/AAAFAAIAAAAAAPn/AAAFAAAAAAAAAP3/AAAFAAcAAAAAAPz/AAAFAAYAAAD+//3/AAACAAcAAAD9//3/AAACAAcAAAD///3/AAACAAcAAAD+//v/AAACAAMAAAD+//r/AAACAAMAAAD9//r/AAACAAMAAAD9//v/AAACAAMAAAD9//z/AAACAAMAAAD+//z/AAACAAMAAAD///z/AAACAAMAAAD///v/AAACAAMAAAD///r/AAACAAMAAAD0//3/AAACAAcAAAD1//3/AAACAAcAAAD3//3/AAAFAAcAAAD2//3/AAACAAcAAAD3//z/AAAFAAIAAAD3//v/AAAFAAIAAAD3//r/AAAFAAIAAAD3//n/AAAFAAIAAAA=")
 tile_set = SubResource("TileSet_0p3oe")
+
+[node name="Area2D" parent="." unique_id=962626050 instance=ExtResource("3_bjq8p")]
+position = Vector2(-94, -68)
+speed = 2.0
