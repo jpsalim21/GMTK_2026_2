@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://j1t1nwjj4sd1"]
+
+[ext_resource type="Script" uid="uid://bvsgwitvmw1p6" path="res://BaseGame/scripts/player.gd" id="1_4awfm"]
+[ext_resource type="Texture2D" uid="uid://b4km6y4sijq73" path="res://BaseGame/assets/sprites/knight.png" id="1_k1kw1"]
+[ext_resource type="Texture2D" uid="uid://cducdc3i25vm" path="res://BaseGame/assets/sprites/Sprite-0001.png" id="3_fmctt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4awfm"]
+atlas = ExtResource("1_k1kw1")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmctt"]
+atlas = ExtResource("1_k1kw1")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cp1k"]
+atlas = ExtResource("1_k1kw1")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bnm7"]
+atlas = ExtResource("1_k1kw1")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6jc0w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4awfm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmctt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cp1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bnm7")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 7.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjq8p"]
+size = Vector2(11, 5)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1285676855]
+script = ExtResource("1_4awfm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1937686299]
+sprite_frames = SubResource("SpriteFrames_6jc0w")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=225474349]
+position = Vector2(-0.5, 8.5)
+shape = SubResource("RectangleShape2D_bjq8p")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=192585997]
+position = Vector2(8, 6)
+texture = ExtResource("3_fmctt")
