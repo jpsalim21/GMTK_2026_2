@@ -30,5 +30,12 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = direction * SPEED
-
+	
 	move_and_slide()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("MouseRight"):
+		Engine.time_scale = 0.4
+	elif event.is_action_released("MouseRight"):
+		Engine.time_scale = 1.0
+	

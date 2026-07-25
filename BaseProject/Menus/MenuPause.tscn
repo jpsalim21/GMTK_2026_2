@@ -9,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_k7g53")
 
 [node name="Panel" type="Panel" parent="." unique_id=181026404]
@@ -18,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1841321309]
 layout_mode = 1
@@ -31,16 +33,19 @@ grow_horizontal = 2
 
 [node name="Titulo" type="Label" parent="VBoxContainer" unique_id=729721324]
 layout_mode = 2
+mouse_filter = 1
 theme_override_font_sizes/font_size = 50
 text = "Pause"
 horizontal_alignment = 1
 
 [node name="ResolucaoLabel" type="Label" parent="VBoxContainer" unique_id=1906637663]
 layout_mode = 2
+mouse_filter = 1
 text = "Resolution"
 
 [node name="Resolucao" type="OptionButton" parent="VBoxContainer" unique_id=1984501050]
 layout_mode = 2
+mouse_filter = 1
 selected = 0
 item_count = 4
 popup/item_0/text = "1920x1080"
@@ -54,43 +59,52 @@ popup/item_3/id = 3
 
 [node name="VolumeLabel" type="Label" parent="VBoxContainer" unique_id=1925913160]
 layout_mode = 2
+mouse_filter = 1
 text = "
 Audio:"
 horizontal_alignment = 1
 
 [node name="GeralLabel" type="Label" parent="VBoxContainer" unique_id=814228885]
 layout_mode = 2
+mouse_filter = 1
 text = "Geral:"
 
 [node name="GeralSlider" type="HSlider" parent="VBoxContainer" unique_id=2054120408]
 layout_mode = 2
+mouse_filter = 1
 min_value = -80.0
 max_value = 0.0
 
 [node name="MusicaLabel" type="Label" parent="VBoxContainer" unique_id=317754595]
 layout_mode = 2
+mouse_filter = 1
 text = "Music:"
 
 [node name="MusicaSlider" type="HSlider" parent="VBoxContainer" unique_id=758292003]
 layout_mode = 2
+mouse_filter = 1
 min_value = -80.0
 max_value = 0.0
 
 [node name="SFXLabel" type="Label" parent="VBoxContainer" unique_id=2141996721]
 layout_mode = 2
+mouse_filter = 1
 text = "SFX:"
 
 [node name="SFXSlider" type="HSlider" parent="VBoxContainer" unique_id=1336487886]
 layout_mode = 2
+mouse_filter = 1
 min_value = -80.0
 max_value = 0.0
 
 [node name="Voltar" type="Button" parent="VBoxContainer" unique_id=9265911]
 layout_mode = 2
+mouse_filter = 1
 text = "Return"
 
 [node name="Sair" type="Button" parent="VBoxContainer" unique_id=999752063]
 layout_mode = 2
+mouse_filter = 1
 text = "Quit"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
