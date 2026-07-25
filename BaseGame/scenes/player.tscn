@@ -103,8 +103,8 @@ shape = SubResource("RectangleShape2D_bjq8p")
 
 [node name="RevolverSprite" type="Sprite2D" parent="." unique_id=1849709014]
 z_index = 1
-position = Vector2(8, 1)
 texture = ExtResource("3_fmctt")
+offset = Vector2(15, 0)
 
 [node name="Raycasts" type="Node2D" parent="." unique_id=964905150]
 
@@ -112,4 +112,3 @@ texture = ExtResource("3_fmctt")
 target_position = Vector2(500, 0)
 
 [node name="Ray2" type="RayCast2D" parent="Raycasts" unique_id=746055991]
-offset = Vector2(4, 0)

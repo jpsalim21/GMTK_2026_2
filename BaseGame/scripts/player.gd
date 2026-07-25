@@ -11,7 +11,7 @@ const SPEED = 150.0
 var aiming : bool = false
 
 func _ready() -> void:
-	#revolverPosition = revolver_sprite.position.x
+	revolverPosition = revolver_sprite.position.x
 	pass
 
 func _process(delta: float) -> void:
@@ -24,7 +24,6 @@ func _process(delta: float) -> void:
 			var normal = ray_1.get_collision_normal()
 			ray_2.global_position = ray_1.get_collision_point()
 			
-	'''
 	if global_position.x < mousePosition.x:
 		revolver_sprite.flip_v = false
 		revolver_sprite.position.x = revolverPosition
@@ -33,10 +32,9 @@ func _process(delta: float) -> void:
 		revolver_sprite.position.x = - revolverPosition
 		revolver_sprite.flip_v = true
 		player_sprite.flip_h = true
-	'''
 	
 	
-	#revolver_sprite.look_at(mousePosition)
+	revolver_sprite.look_at(mousePosition)
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
