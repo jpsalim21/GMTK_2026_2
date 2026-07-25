@@ -61,5 +61,5 @@ tile_map_data = PackedByteArray("AAD8//3/AAAAAAcAAAD8//z/AAAAAAYAAAD8//v/AAAAAAI
 tile_set = SubResource("TileSet_0p3oe")
 
 [node name="Area2D" parent="." unique_id=962626050 instance=ExtResource("3_bjq8p")]
-position = Vector2(-94, -68)
+position = Vector2(-101, 6)
 speed = 2.0
