@@ -69,16 +69,17 @@ texture_region_size = Vector2i(32, 32)
 2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-3:0/size_in_atlas = Vector2i(1, 2)
-3:0/0 = 0
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -16, 12, -16, 12, 16, -12, 16)
 4:0/0 = 0
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-3:3/size_in_atlas = Vector2i(1, 2)
-3:3/0 = 0
-3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -32, 8, -32, 8.5, -23.5, 16, -24, 16, -5.5, 8, -5.3957615, 8, 10.971382, 12.5, 13.5, 8, 24, 5, 28, 0, 29, -4.5, 28, -8, 24, -12, 13, -8, 11.690817)
 3:5/0 = 0
-3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -4, -8, 12, 0, 12, 8, 12, 12, -4, 0, -4)
+3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, 0, -8, -4, 0, -4, 8, -4, 12, 0, 4, 12, -4, 12)
+3:2/size_in_atlas = Vector2i(1, 3)
+3:2/0 = 0
+3:2/0/texture_origin = Vector2i(0, 32)
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -16, 0, -20, 12, -16, 8, 0, -8, 0)
+3:0/size_in_atlas = Vector2i(1, 2)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(12, -32, 12, -16, 12, 0, 0, 0, -12, 0, -12, -16, -12, -32)
 
 [sub_resource type="TileSet" id="TileSet_0p131"]
 tile_size = Vector2i(32, 32)
@@ -102,5 +103,5 @@ tile_set = SubResource("TileSet_63qn2")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=1056182234]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAD8//7/AQAAAAQAAAD9//7/AQABAAQAAAD+//7/AQABAAQAAAD///7/AQACAAQAAAD///3/AQACAAMAAAD+//3/AQABAAMAAAD9//3/AQABAAMAAAD8//3/AQAAAAMAAAD9//z/AQABAAIAAAD+//z/AQABAAIAAAD9//v/AQABAAEAAAD+//v/AQABAAEAAAD9//r/AQABAAAAAAD+//r/AQABAAAAAAD///r/AQACAAAAAAD///v/AQACAAEAAAD///z/AQACAAIAAAD8//v/AQAAAAEAAAD8//z/AQAAAAIAAAD8//r/AQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD8//7/AQAAAAQAAAD9//7/AQABAAQAAAD+//7/AQABAAQAAAD///7/AQACAAQAAAD///3/AQACAAMAAAD+//3/AQAEAAAAAAD9//3/AQABAAMAAAD8//3/AQAAAAMAAAD9//z/AQABAAIAAAD+//z/AQABAAIAAAD9//v/AQABAAEAAAD+//v/AQABAAEAAAD9//r/AQABAAAAAAD+//r/AQABAAAAAAD///r/AQACAAAAAAD///v/AQACAAEAAAD///z/AQACAAIAAAD8//v/AQAAAAEAAAD8//z/AQAAAAIAAAD8//r/AQAAAAAAAAD8////AQADAAIAAAAAAP7/AQADAAUAAAD/////AQADAAAAAAA=")
 tile_set = SubResource("TileSet_0p131")
