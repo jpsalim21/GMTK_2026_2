@@ -91,6 +91,7 @@ animations = [{
 size = Vector2(17, 5)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1285676855]
+collision_mask = 27
 script = ExtResource("1_4awfm")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="." unique_id=1937686299]
@@ -110,9 +111,11 @@ offset = Vector2(15, 0)
 
 [node name="Ray1" type="RayCast2D" parent="Raycasts" unique_id=2125559900]
 target_position = Vector2(500, 0)
+collision_mask = 16
 
 [node name="Ray2" type="RayCast2D" parent="Raycasts" unique_id=746055991]
 target_position = Vector2(500, 0)
+collision_mask = 16
 
 [node name="Line2D" type="Line2D" parent="Raycasts" unique_id=1331805057]
 points = PackedVector2Array(0, 0, 0, 0, 0, 0)
