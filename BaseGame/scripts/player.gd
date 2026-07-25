@@ -2,9 +2,13 @@ extends CharacterBody2D
 
 @onready var player_sprite: AnimatedSprite2D = $PlayerSprite
 @onready var revolver_sprite: Sprite2D = $RevolverSprite
+@onready var ray_1: RayCast2D = $Raycasts/Ray1
+@onready var ray_2: RayCast2D = $Raycasts/Ray2
 
 var revolverPosition: float 
 const SPEED = 150.0
+
+var aiming : bool = false
 
 func _ready() -> void:
 	#revolverPosition = revolver_sprite.position.x
@@ -12,6 +16,16 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var mousePosition = get_global_mouse_position()
+	if aiming:
+		ray_1.look_at(mousePosition)
+		if ray_1.is_colliding():
+			var ray_1_direction = mousePosition - ray_1.global_position
+			ray_1_direction = ray_1_direction.normalized()
+			var normal = ray_1.get_collision_normal()
+			ray_2.global_position = ray_1.get_collision_point()
+			print(normal)
+			var bounced_direction = ray_1_direction + 2 * (ray_1_direction.dot(normal)) * (normal)
+			ray_2.look_at( ray_2.global_position + bounced_direction )
 	
 	'''
 	if global_position.x < mousePosition.x:
@@ -36,6 +50,8 @@ func _physics_process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("MouseRight"):
 		Engine.time_scale = 0.4
+		aiming = true
 	elif event.is_action_released("MouseRight"):
 		Engine.time_scale = 1.0
+		aiming = false
 	
