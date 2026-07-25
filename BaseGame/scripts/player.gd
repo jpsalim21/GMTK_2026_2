@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var revolver_sprite: Sprite2D = $RevolverSprite
 @onready var ray_1: RayCast2D = $Raycasts/Ray1
 @onready var ray_2: RayCast2D = $Raycasts/Ray2
+@onready var aim_line: Line2D = $Raycasts/Line2D
 
 var revolverPosition: float 
 const SPEED = 150.0
@@ -18,14 +19,25 @@ func _process(delta: float) -> void:
 	var mousePosition = get_global_mouse_position()
 	if aiming:
 		ray_1.look_at(mousePosition)
+		var ray_1_direction = mousePosition - ray_1.global_position
+		ray_1_direction = ray_1_direction.normalized()
+		aim_line.visible = true
+		aim_line.position = ray_1_direction * (revolver_sprite.offset.x + 6)
 		if ray_1.is_colliding():
-			var ray_1_direction = mousePosition - ray_1.global_position
-			ray_1_direction = ray_1_direction.normalized()
 			var normal = ray_1.get_collision_normal()
+			var ray1_pos = ray_1.get_collision_point()
 			var reflected = ray_1_direction.bounce(normal)
 			ray_2.global_position = ray_1.get_collision_point()
 			ray_2.look_at( ray_2.global_position + reflected)
 			
+			aim_line.set_point_position(1, ray1_pos - aim_line.global_position)
+			aim_line.set_point_position(2, ray_2.global_position + reflected * 500)
+		else:
+			aim_line.set_point_position(1, ray_1_direction * 500)
+			aim_line.set_point_position(2, ray_1_direction * 500)
+	else:
+		aim_line.visible = false
+	
 	if global_position.x < mousePosition.x:
 		revolver_sprite.flip_v = false
 		revolver_sprite.position.x = revolverPosition
@@ -51,7 +63,7 @@ func _physics_process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("MouseRight"):
-		Engine.time_scale = 0.4
+		Engine.time_scale = 0.1
 		aiming = true
 	elif event.is_action_released("MouseRight"):
 		Engine.time_scale = 1.0

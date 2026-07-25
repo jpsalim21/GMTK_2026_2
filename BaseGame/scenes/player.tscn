@@ -113,3 +113,7 @@ target_position = Vector2(500, 0)
 
 [node name="Ray2" type="RayCast2D" parent="Raycasts" unique_id=746055991]
 target_position = Vector2(500, 0)
+
+[node name="Line2D" type="Line2D" parent="Raycasts" unique_id=1331805057]
+points = PackedVector2Array(0, 0, 0, 0, 0, 0)
+width = 1.0
