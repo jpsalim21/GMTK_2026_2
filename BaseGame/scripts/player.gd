@@ -22,7 +22,9 @@ func _process(delta: float) -> void:
 			var ray_1_direction = mousePosition - ray_1.global_position
 			ray_1_direction = ray_1_direction.normalized()
 			var normal = ray_1.get_collision_normal()
+			var reflected = ray_1_direction.bounce(normal)
 			ray_2.global_position = ray_1.get_collision_point()
+			ray_2.look_at( ray_2.global_position + reflected)
 			
 	if global_position.x < mousePosition.x:
 		revolver_sprite.flip_v = false

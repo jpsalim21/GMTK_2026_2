@@ -112,3 +112,4 @@ offset = Vector2(15, 0)
 target_position = Vector2(500, 0)
 
 [node name="Ray2" type="RayCast2D" parent="Raycasts" unique_id=746055991]
+target_position = Vector2(500, 0)
