@@ -1,66 +1,109 @@
 [gd_scene format=3 uid="uid://j1t1nwjj4sd1"]
 
 [ext_resource type="Script" uid="uid://bvsgwitvmw1p6" path="res://BaseGame/scripts/player.gd" id="1_4awfm"]
-[ext_resource type="Texture2D" uid="uid://b4km6y4sijq73" path="res://BaseGame/assets/sprites/knight.png" id="1_k1kw1"]
-[ext_resource type="Texture2D" uid="uid://cducdc3i25vm" path="res://BaseGame/assets/sprites/Sprite-0001.png" id="3_fmctt"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4awfm"]
-atlas = ExtResource("1_k1kw1")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fmctt"]
-atlas = ExtResource("1_k1kw1")
-region = Rect2(32, 0, 32, 32)
+[ext_resource type="Texture2D" uid="uid://c16i4604h4w7w" path="res://BaseGame/assets/sprites/CowboyBW.png" id="2_fmctt"]
+[ext_resource type="Texture2D" uid="uid://cprgt80x3cc2t" path="res://BaseGame/assets/sprites/revolver.png" id="3_fmctt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7cp1k"]
-atlas = ExtResource("1_k1kw1")
-region = Rect2(64, 0, 32, 32)
+atlas = ExtResource("2_fmctt")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5bnm7"]
-atlas = ExtResource("1_k1kw1")
+atlas = ExtResource("2_fmctt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3deyf"]
+atlas = ExtResource("2_fmctt")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mj8n0"]
+atlas = ExtResource("2_fmctt")
 region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmctt"]
+atlas = ExtResource("2_fmctt")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mki0o"]
+atlas = ExtResource("2_fmctt")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tkhl"]
+atlas = ExtResource("2_fmctt")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxfhp"]
+atlas = ExtResource("2_fmctt")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lh1g3"]
+atlas = ExtResource("2_fmctt")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0rfh"]
+atlas = ExtResource("2_fmctt")
+region = Rect2(160, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6jc0w"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4awfm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fmctt")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_7cp1k")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5bnm7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3deyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mj8n0")
 }],
 "loop": 1,
-"name": &"default",
-"speed": 7.0
+"name": &"idle",
+"speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmctt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mki0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tkhl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxfhp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lh1g3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0rfh")
+}],
 "loop": 1,
-"name": &"new_animation",
+"name": &"walking",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjq8p"]
-size = Vector2(11, 5)
+size = Vector2(17, 5)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1285676855]
 script = ExtResource("1_4awfm")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1937686299]
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="." unique_id=1937686299]
 sprite_frames = SubResource("SpriteFrames_6jc0w")
-autoplay = "default"
+animation = &"walking"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=225474349]
-position = Vector2(-0.5, 8.5)
+position = Vector2(0.5, 6)
 shape = SubResource("RectangleShape2D_bjq8p")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=192585997]
-position = Vector2(8, 6)
+[node name="RevolverSprite" type="Sprite2D" parent="." unique_id=1849709014]
+z_index = 1
+position = Vector2(8, 1)
 texture = ExtResource("3_fmctt")
 
 [node name="Raycasts" type="Node2D" parent="." unique_id=964905150]
@@ -69,3 +112,4 @@ texture = ExtResource("3_fmctt")
 target_position = Vector2(500, 0)
 
 [node name="Ray2" type="RayCast2D" parent="Raycasts" unique_id=746055991]
+offset = Vector2(4, 0)

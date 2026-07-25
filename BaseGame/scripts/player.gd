@@ -42,6 +42,11 @@ func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = direction * SPEED
 	
+	if direction.x == 0 && direction.y == 0:
+		player_sprite.play("idle")
+	else:
+		player_sprite.play("walking")
+
 	move_and_slide()
 
 func _input(event: InputEvent) -> void:
