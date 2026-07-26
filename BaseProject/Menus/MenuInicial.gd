@@ -4,7 +4,7 @@ extends Node
 
 @onready var menu_inicial: Control = $"../MenuInicial"
 @onready var opcoes: Control = $"../Opcoes"
-@export var proxCena : String
+@export var proxCena : String = "res://BaseGame/scenes/SelecaoFases.tscn"
 
 func _ready() -> void:
 	$"../Opcoes/VBoxContainer/GeralSlider".value = GameController.configuracoes.audioMaster
@@ -15,7 +15,7 @@ func _ready() -> void:
 
 #Menu inicial
 func _on_start_pressed() -> void:
-	SceneController.changeSceneTo(proxCena, "CircleToon")
+	SceneController.changeSceneTo(proxCena)
 
 func _on_options_pressed() -> void:
 	opcoes.visible = true

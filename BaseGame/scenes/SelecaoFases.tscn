@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://ueywob5yxfqg"]
 
 [ext_resource type="Script" uid="uid://2gayjw64kkcl" path="res://BaseGame/scenes/LoadButtonsLevel.gd" id="1_4xdh3"]
+[ext_resource type="FontFile" uid="uid://cb5nhr82xycc8" path="res://BaseGame/assets/fonts/PixelOperator8-Bold.ttf" id="1_8nrqj"]
+[ext_resource type="Theme" uid="uid://boio4eyolwhtj" path="res://BaseProject/Menus/UI_theme.tres" id="3_antdc"]
+[ext_resource type="Script" uid="uid://ctb27uyhpm2uv" path="res://BaseGame/scenes/ReturnButton.gd" id="4_x6dom"]
 
 [node name="Control" type="CanvasLayer" unique_id=381088464]
 
@@ -23,8 +26,31 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer" unique_id=219988747]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=1285554559]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=524921424]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_8nrqj")
+theme_override_font_sizes/font_size = 64
+text = "Level Selection"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=219988747]
+layout_mode = 2
+size_flags_vertical = 3
 columns = 11
 script = ExtResource("1_4xdh3")
 list_levels = Array[String](["res://BaseGame/scenes/Scene1.tscn"])
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer" unique_id=482759682]
+custom_minimum_size = Vector2(200, 50)
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_antdc")
+theme_override_fonts/font = ExtResource("1_8nrqj")
+theme_override_font_sizes/font_size = 16
+text = "Return"
+script = ExtResource("4_x6dom")
