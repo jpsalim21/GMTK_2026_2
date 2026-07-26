@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://8lje0jw5ra7f"]
+[gd_scene format=4 uid="uid://dm1ivye1y51at"]
 
 [ext_resource type="PackedScene" uid="uid://j1t1nwjj4sd1" path="res://BaseGame/scenes/player.tscn" id="1_fksp1"]
 [ext_resource type="PackedScene" uid="uid://e2txrp1c11im" path="res://BaseGame/scenes/Interface/CountDown_Interface.tscn" id="3_bjq8p"]
