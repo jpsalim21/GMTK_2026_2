@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var player_sprite: AnimatedSprite2D = $PlayerSprite
-@onready var revolver_sprite: Sprite2D = $RevolverSprite
+@onready var revolver_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var revolverPosition: float 
 const SPEED = 150.0
@@ -27,6 +27,15 @@ func _process(delta: float) -> void:
 	
 	revolver_sprite.look_at(mousePosition)
 
+	
+"""
+func shoot() -> void:
+	revolver_sprite.play("shoot")
+	await revolver_sprite.animation_finished
+	revolver_sprite.play("idle")
+"""
+
+
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = direction * SPEED
@@ -35,5 +44,5 @@ func _physics_process(delta: float) -> void:
 		player_sprite.play("idle")
 	else:
 		player_sprite.play("walking")
-
+	
 	move_and_slide()
