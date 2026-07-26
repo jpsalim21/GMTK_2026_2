@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://di82e63mcqs6j"]
 
 [ext_resource type="Script" uid="uid://bja81yofae3rd" path="res://BaseGame/scripts/projetil.gd" id="1_0x1j3"]
+[ext_resource type="Texture2D" uid="uid://bgajcd6uwrtlc" path="res://BaseGame/assets/sprites/BulletSprite.png" id="2_hnuei"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0x1j3"]
 radius = 3.0
@@ -10,6 +11,9 @@ collision_layer = 4
 collision_mask = 18
 script = ExtResource("1_0x1j3")
 speed = 500.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1132857942]
+texture = ExtResource("2_hnuei")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2079720733]
 shape = SubResource("CircleShape2D_0x1j3")
