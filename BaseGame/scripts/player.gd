@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 @onready var player_sprite: AnimatedSprite2D = $PlayerSprite
@@ -5,6 +6,7 @@ extends CharacterBody2D
 @onready var ray_1: RayCast2D = $Raycasts/Ray1
 @onready var ray_2: RayCast2D = $Raycasts/Ray2
 @onready var aim_line: Line2D = $Raycasts/Line2D
+@onready var level_controller: LevelController = %LevelController
 
 @export var count_down_interface : CountDownInterface
 
@@ -21,7 +23,6 @@ var bullets_left := 6
 func _ready() -> void:
 	revolverPosition = revolver_sprite.position.x
 	GameManager.time_scale_changed.connect( time_scale_change )
-	pass
 
 func _process(delta: float) -> void:
 	var mousePosition = get_global_mouse_position()
@@ -64,6 +65,7 @@ func shoot() -> void:
 	if bullets_left <= 0:
 		return
 	bullets_left -= 1
+	
 	var bullet : Bullet = PROJETIL.instantiate()
 	get_tree().current_scene.add_child(bullet)
 	bullet.setup(aim_direction.normalized())
@@ -73,6 +75,7 @@ func shoot() -> void:
 	count_down_interface.run_down_animation(bullets_left)
 	await revolver_sprite.animation_finished
 	revolver_sprite.play("idle")
+	level_controller.player_shooted(bullets_left)
 
 func time_scale_change(new_value : float):
 	revolver_sprite.speed_scale = 1.0 / new_value
