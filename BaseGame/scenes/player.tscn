@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bvsgwitvmw1p6" path="res://BaseGame/scripts/player.gd" id="1_4awfm"]
 [ext_resource type="Texture2D" uid="uid://c16i4604h4w7w" path="res://BaseGame/assets/sprites/CowboyBW.png" id="2_fmctt"]
-[ext_resource type="Texture2D" uid="uid://cprgt80x3cc2t" path="res://BaseGame/assets/sprites/revolver.png" id="3_fmctt"]
+[ext_resource type="Texture2D" uid="uid://vlvsnf07cusi" path="res://BaseGame/assets/sprites/RevolverAnimated.png" id="4_7cp1k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7cp1k"]
 atlas = ExtResource("2_fmctt")
@@ -90,6 +90,68 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjq8p"]
 size = Vector2(17, 5)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gniy4"]
+atlas = ExtResource("4_7cp1k")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fqi6"]
+atlas = ExtResource("4_7cp1k")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2v065"]
+atlas = ExtResource("4_7cp1k")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqdwr"]
+atlas = ExtResource("4_7cp1k")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqpb7"]
+atlas = ExtResource("4_7cp1k")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tbjp"]
+atlas = ExtResource("4_7cp1k")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jno74"]
+atlas = ExtResource("4_7cp1k")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0p3oe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gniy4")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fqi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2v065")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqdwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqpb7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tbjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jno74")
+}],
+"loop": 1,
+"name": &"shoot",
+"speed": 15.0
+}]
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1285676855]
 collision_mask = 27
 script = ExtResource("1_4awfm")
@@ -102,21 +164,9 @@ animation = &"walking"
 position = Vector2(0.5, 6)
 shape = SubResource("RectangleShape2D_bjq8p")
 
-[node name="RevolverSprite" type="Sprite2D" parent="." unique_id=1849709014]
-z_index = 1
-texture = ExtResource("3_fmctt")
-offset = Vector2(15, 0)
-
-[node name="Raycasts" type="Node2D" parent="." unique_id=964905150]
-
-[node name="Ray1" type="RayCast2D" parent="Raycasts" unique_id=2125559900]
-target_position = Vector2(500, 0)
-collision_mask = 16
-
-[node name="Ray2" type="RayCast2D" parent="Raycasts" unique_id=746055991]
-target_position = Vector2(500, 0)
-collision_mask = 16
-
-[node name="Line2D" type="Line2D" parent="Raycasts" unique_id=1331805057]
-points = PackedVector2Array(0, 0, 0, 0, 0, 0)
-width = 1.0
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=456459903]
+position = Vector2(8, 1)
+sprite_frames = SubResource("SpriteFrames_0p3oe")
+animation = &"idle"
+autoplay = "idle"
+offset = Vector2(4, 0)
