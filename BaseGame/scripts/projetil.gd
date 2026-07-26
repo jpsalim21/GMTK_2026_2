@@ -32,4 +32,4 @@ func collision_entered(node : Node2D):
 	ray_cast_2d.target_position = direction * 50
 
 func _draw() -> void:
-	draw_circle(Vector2.ZERO, 3, Color.ORANGE_RED, true)
+	draw_circle(Vector2.ZERO, 3, Color.WHITE, true)
