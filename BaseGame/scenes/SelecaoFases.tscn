@@ -41,7 +41,7 @@ layout_mode = 2
 size_flags_vertical = 3
 columns = 11
 script = ExtResource("1_4xdh3")
-list_levels = Array[String](["res://BaseGame/scenes/Scene1.tscn"])
+list_levels = Array[String](["res://BaseGame/scenes/Scene1.tscn", "res://BaseGame/scenes/scene2.tscn", "res://BaseGame/scenes/scene3.tscn"])
 
 [node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer" unique_id=482759682]
 custom_minimum_size = Vector2(200, 50)
