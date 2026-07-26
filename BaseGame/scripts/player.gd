@@ -5,11 +5,13 @@ extends CharacterBody2D
 @onready var ray_1: RayCast2D = $Raycasts/Ray1
 @onready var ray_2: RayCast2D = $Raycasts/Ray2
 @onready var aim_line: Line2D = $Raycasts/Line2D
+const PROJETIL = preload("uid://di82e63mcqs6j")
 
 var revolverPosition: float 
 const SPEED = 150.0
 
 var aiming : bool = false
+var aim_direction : Vector2
 
 func _ready() -> void:
 	revolverPosition = revolver_sprite.position.x
@@ -17,24 +19,24 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var mousePosition = get_global_mouse_position()
+	aim_direction = mousePosition - ray_1.global_position
 	if aiming:
 		ray_1.look_at(mousePosition)
-		var ray_1_direction = mousePosition - ray_1.global_position
-		ray_1_direction = ray_1_direction.normalized()
+		aim_direction = aim_direction.normalized()
 		aim_line.visible = true
-		aim_line.position = ray_1_direction * (revolver_sprite.offset.x + 6)
+		aim_line.position = aim_direction * (revolver_sprite.offset.x + 6)
 		if ray_1.is_colliding():
 			var normal = ray_1.get_collision_normal()
 			var ray1_pos = ray_1.get_collision_point()
-			var reflected = ray_1_direction.bounce(normal)
+			var reflected = aim_direction.bounce(normal)
 			ray_2.global_position = ray_1.get_collision_point()
 			ray_2.look_at( ray_2.global_position + reflected)
 			
 			aim_line.set_point_position(1, ray1_pos - aim_line.global_position)
 			aim_line.set_point_position(2, ray_2.global_position + reflected * 500)
 		else:
-			aim_line.set_point_position(1, ray_1_direction * 500)
-			aim_line.set_point_position(2, ray_1_direction * 500)
+			aim_line.set_point_position(1, aim_direction * 500)
+			aim_line.set_point_position(2, aim_direction * 500)
 	else:
 		aim_line.visible = false
 	
@@ -49,14 +51,18 @@ func _process(delta: float) -> void:
 	
 	
 	revolver_sprite.look_at(mousePosition)
+	if Input.is_action_just_pressed("MouseLeft"):
+		shoot()
 
-	
-"""
 func shoot() -> void:
+	var bullet : Bullet = PROJETIL.instantiate()
+	get_tree().current_scene.add_child(bullet)
+	bullet.setup(aim_direction.normalized())
+	bullet.global_position = global_position
+	
 	revolver_sprite.play("shoot")
 	await revolver_sprite.animation_finished
 	revolver_sprite.play("idle")
-"""
 
 
 func _physics_process(delta: float) -> void:

@@ -1,3 +1,4 @@
+class_name Bullet
 extends Area2D
 
 @export var speed : float
@@ -8,8 +9,6 @@ var direction : Vector2
 
 func _ready() -> void:
 	body_entered.connect(collision_entered)
-	#set_process(false)
-	setup(Vector2(1, -1))
 
 func setup(_direction : Vector2):
 	direction = _direction
@@ -21,5 +20,9 @@ func _physics_process(delta: float) -> void:
 	normal = ray_cast_2d.get_collision_normal()
 
 func collision_entered(node : Node2D):
-	direction = -direction.reflect(normal)
+	if normal != Vector2.ZERO:
+		direction = -direction.reflect(normal)
 	ray_cast_2d.target_position = direction * 50
+
+func _draw() -> void:
+	draw_circle(Vector2.ZERO, 3, Color.ORANGE_RED, true)

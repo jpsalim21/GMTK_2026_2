@@ -170,7 +170,7 @@ animation = &"shoot"
 autoplay = "idle"
 frame = 5
 frame_progress = 1.0
-offset = Vector2(9, 0)
+offset = Vector2(14, 0)
 
 [node name="Raycasts" type="Node2D" parent="." unique_id=1881218220]
 
