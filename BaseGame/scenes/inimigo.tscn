@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://01avvg7wa23e"]
+
+[ext_resource type="Script" uid="uid://by8w2c6xw6k16" path="res://BaseGame/scenes/Enemy.gd" id="1_bmbmc"]
+[ext_resource type="Texture2D" uid="uid://dsh2efj6kf521" path="res://BaseGame/assets/sprites/Inimigo.png" id="2_xubu6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_capps"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bmbmc"]
+size = Vector2(18, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_malho"]
+atlas = ExtResource("2_xubu6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62eq7"]
+atlas = ExtResource("2_xubu6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sphi3"]
+atlas = ExtResource("2_xubu6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhxmx"]
+atlas = ExtResource("2_xubu6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sf01r"]
+atlas = ExtResource("2_xubu6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_capps"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_malho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62eq7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sphi3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhxmx")
+}],
+"loop": 0,
+"name": &"Die",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sf01r")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Inimigo" type="Area2D" unique_id=595647341]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_bmbmc")
+alpha_zero_color = Color(1, 1, 1, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=605402970]
+shape = SubResource("RectangleShape2D_capps")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1687218961]
+collision_layer = 16
+collision_mask = 31
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1019096168]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_bmbmc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1228941039]
+sprite_frames = SubResource("SpriteFrames_capps")
+autoplay = "default"
