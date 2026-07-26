@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bvsgwitvmw1p6" path="res://BaseGame/scripts/player.gd" id="1_4awfm"]
 [ext_resource type="Texture2D" uid="uid://c16i4604h4w7w" path="res://BaseGame/assets/sprites/CowboyBW.png" id="2_fmctt"]
+[ext_resource type="AudioStream" uid="uid://bl0dema1vjhfn" path="res://BaseGame/assets/sounds/Shot.mp3" id="4_5bnm7"]
 [ext_resource type="Texture2D" uid="uid://vlvsnf07cusi" path="res://BaseGame/assets/sprites/RevolverAnimated.png" id="4_7cp1k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7cp1k"]
@@ -153,7 +154,7 @@ animations = [{
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1285676855]
-collision_mask = 27
+collision_mask = 251
 script = ExtResource("1_4awfm")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="." unique_id=1937686299]
@@ -184,5 +185,9 @@ target_position = Vector2(500, 0)
 collision_mask = 18
 
 [node name="Line2D" type="Line2D" parent="Raycasts" unique_id=1180171512]
+z_index = 3
 points = PackedVector2Array(0, 0, 0, 0, 0, 0)
 width = 1.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1879255420]
+stream = ExtResource("4_5bnm7")

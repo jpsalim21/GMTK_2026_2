@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 @onready var player_sprite: AnimatedSprite2D = $PlayerSprite
@@ -5,6 +6,8 @@ extends CharacterBody2D
 @onready var ray_1: RayCast2D = $Raycasts/Ray1
 @onready var ray_2: RayCast2D = $Raycasts/Ray2
 @onready var aim_line: Line2D = $Raycasts/Line2D
+@onready var level_controller: LevelController = %LevelController
+@onready var shot_audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @export var count_down_interface : CountDownInterface
 
@@ -21,7 +24,6 @@ var bullets_left := 6
 func _ready() -> void:
 	revolverPosition = revolver_sprite.position.x
 	GameManager.time_scale_changed.connect( time_scale_change )
-	pass
 
 func _process(delta: float) -> void:
 	var mousePosition = get_global_mouse_position()
@@ -39,7 +41,7 @@ func _process(delta: float) -> void:
 			ray_2.look_at( ray_2.global_position + reflected)
 			
 			aim_line.set_point_position(1, ray1_pos - aim_line.global_position)
-			aim_line.set_point_position(2, ray_2.global_position + reflected * 500 - aim_line.global_position)
+			aim_line.set_point_position(2, ray_2.get_collision_point() - aim_line.global_position)
 		else:
 			aim_line.set_point_position(1, aim_direction * 500)
 			aim_line.set_point_position(2, aim_direction * 500)
@@ -64,15 +66,18 @@ func shoot() -> void:
 	if bullets_left <= 0:
 		return
 	bullets_left -= 1
+	
 	var bullet : Bullet = PROJETIL.instantiate()
 	get_tree().current_scene.add_child(bullet)
 	bullet.setup(aim_direction.normalized())
 	bullet.global_position = global_position
 	
 	revolver_sprite.play("shoot")
+	shot_audio.play(0.09)
 	count_down_interface.run_down_animation(bullets_left)
 	await revolver_sprite.animation_finished
 	revolver_sprite.play("idle")
+	level_controller.player_shooted(bullets_left)
 
 func time_scale_change(new_value : float):
 	revolver_sprite.speed_scale = 1.0 / new_value

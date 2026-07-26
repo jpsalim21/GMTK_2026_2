@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://j1t1nwjj4sd1" path="res://BaseGame/scenes/player.tscn" id="1_fksp1"]
 [ext_resource type="PackedScene" uid="uid://e2txrp1c11im" path="res://BaseGame/scenes/Interface/CountDown_Interface.tscn" id="3_bjq8p"]
 [ext_resource type="Texture2D" uid="uid://csbwar16qjm7" path="res://BaseGame/assets/sprites/Tilemap.png" id="3_uerhd"]
+[ext_resource type="PackedScene" uid="uid://01avvg7wa23e" path="res://BaseGame/scenes/inimigo.tscn" id="4_eo0cp"]
+[ext_resource type="Script" uid="uid://d3aginlgsc0ca" path="res://BaseGame/scripts/LevelController.gd" id="5_ictbi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cjtjg"]
 texture = ExtResource("3_uerhd")
@@ -186,3 +188,14 @@ tile_map_data = PackedByteArray("AAD//wEAAQABAAIAAAAAAAEAAQABAAIAAAD+/wEAAQAAAAI
 tile_set = SubResource("TileSet_0p131")
 
 [node name="CanvasLayer" parent="." unique_id=874731779 instance=ExtResource("3_bjq8p")]
+
+[node name="LevelController" type="Node" parent="." unique_id=1685071563]
+unique_name_in_owner = true
+script = ExtResource("5_ictbi")
+
+[node name="Timer" type="Timer" parent="LevelController" unique_id=1025414773]
+
+[node name="Inimigos" type="Node2D" parent="." unique_id=948217755]
+
+[node name="Inimigo" parent="Inimigos" unique_id=595647341 instance=ExtResource("4_eo0cp")]
+position = Vector2(66, 32)
