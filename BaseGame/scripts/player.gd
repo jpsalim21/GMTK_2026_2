@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 			ray_2.look_at( ray_2.global_position + reflected)
 			
 			aim_line.set_point_position(1, ray1_pos - aim_line.global_position)
-			aim_line.set_point_position(2, ray_2.global_position + reflected * 500 - aim_line.global_position)
+			aim_line.set_point_position(2, ray_2.get_collision_point() - aim_line.global_position)
 		else:
 			aim_line.set_point_position(1, aim_direction * 500)
 			aim_line.set_point_position(2, aim_direction * 500)

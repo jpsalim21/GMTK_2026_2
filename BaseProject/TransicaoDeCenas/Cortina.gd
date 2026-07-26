@@ -8,9 +8,13 @@ extends CanvasLayer
 var circleMaterial : ShaderMaterial
 
 func _ready() -> void:
+	GameManager.time_scale_changed.connect(change_speed_scale)
 	circleMaterial = circle_transition.material
 	get_viewport().size_changed.connect(windowResized)
 	windowResized()
+
+func change_speed_scale(new_scale):
+	animation.speed_scale = 1.0 / new_scale
 
 func preencheTela(booleano : bool, transicao : String = "Diamond"):
 	if not animation.has_animation(transicao):
