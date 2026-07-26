@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var ray_2: RayCast2D = $Raycasts/Ray2
 @onready var aim_line: Line2D = $Raycasts/Line2D
 @onready var level_controller: LevelController = %LevelController
+@onready var shot_audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @export var count_down_interface : CountDownInterface
 
@@ -72,6 +73,7 @@ func shoot() -> void:
 	bullet.global_position = global_position
 	
 	revolver_sprite.play("shoot")
+	shot_audio.play(0.09)
 	count_down_interface.run_down_animation(bullets_left)
 	await revolver_sprite.animation_finished
 	revolver_sprite.play("idle")

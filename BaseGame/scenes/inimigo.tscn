@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://by8w2c6xw6k16" path="res://BaseGame/scenes/Enemy.gd" id="1_bmbmc"]
 [ext_resource type="Texture2D" uid="uid://dsh2efj6kf521" path="res://BaseGame/assets/sprites/Inimigo.png" id="2_xubu6"]
+[ext_resource type="AudioStream" uid="uid://cxlayekqk62xu" path="res://BaseGame/assets/sounds/hurt.wav" id="3_malho"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_capps"]
 
@@ -76,3 +77,6 @@ shape = SubResource("RectangleShape2D_bmbmc")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1228941039]
 sprite_frames = SubResource("SpriteFrames_capps")
 autoplay = "default"
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="." unique_id=1772380057]
+stream = ExtResource("3_malho")

@@ -7,7 +7,7 @@ extends Area2D
 var normal : Vector2
 var direction : Vector2
 
-var bounce_count : int = 2
+var bounce_count : int = 4
 
 func _ready() -> void:
 	body_entered.connect(collision_entered)
