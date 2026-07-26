@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ds50it0w3g756"]
+
+[ext_resource type="FontFile" uid="uid://cb5nhr82xycc8" path="res://BaseGame/assets/fonts/PixelOperator8-Bold.ttf" id="1_dted4"]
+
+[node name="Button" type="Button" unique_id=2008230853]
+custom_minimum_size = Vector2(100, 50)
+theme_override_fonts/font = ExtResource("1_dted4")
+theme_override_font_sizes/font_size = 32
+text = "01"

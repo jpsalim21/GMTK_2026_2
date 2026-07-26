@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ueywob5yxfqg"]
+
+[ext_resource type="Script" uid="uid://2gayjw64kkcl" path="res://BaseGame/scenes/LoadButtonsLevel.gd" id="1_4xdh3"]
+
+[node name="Control" type="CanvasLayer" unique_id=381088464]
+
+[node name="Panel" type="Panel" parent="." unique_id=475739939]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=860274599]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer" unique_id=219988747]
+layout_mode = 2
+columns = 11
+script = ExtResource("1_4xdh3")
+list_levels = Array[String](["res://BaseGame/scenes/Scene1.tscn"])
