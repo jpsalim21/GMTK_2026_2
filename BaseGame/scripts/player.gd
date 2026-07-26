@@ -5,6 +5,9 @@ extends CharacterBody2D
 @onready var ray_1: RayCast2D = $Raycasts/Ray1
 @onready var ray_2: RayCast2D = $Raycasts/Ray2
 @onready var aim_line: Line2D = $Raycasts/Line2D
+
+@export var count_down_interface : CountDownInterface
+
 const PROJETIL = preload("uid://di82e63mcqs6j")
 
 var revolverPosition: float 
@@ -12,6 +15,8 @@ const SPEED = 150.0
 
 var aiming : bool = false
 var aim_direction : Vector2
+
+var bullets_left := 6
 
 func _ready() -> void:
 	revolverPosition = revolver_sprite.position.x
@@ -55,12 +60,16 @@ func _process(delta: float) -> void:
 		shoot()
 
 func shoot() -> void:
+	if bullets_left <= 0:
+		return
+	bullets_left -= 1
 	var bullet : Bullet = PROJETIL.instantiate()
 	get_tree().current_scene.add_child(bullet)
 	bullet.setup(aim_direction.normalized())
 	bullet.global_position = global_position
 	
 	revolver_sprite.play("shoot")
+	count_down_interface.run_down_animation(bullets_left)
 	await revolver_sprite.animation_finished
 	revolver_sprite.play("idle")
 
@@ -78,9 +87,9 @@ func _physics_process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("MouseRight"):
-		Engine.time_scale = 0.1
+		GameManager.time_scale = 0.1
 		aiming = true
 	elif event.is_action_released("MouseRight"):
-		Engine.time_scale = 1.0
+		GameManager.time_scale = 1.0
 		aiming = false
 	
