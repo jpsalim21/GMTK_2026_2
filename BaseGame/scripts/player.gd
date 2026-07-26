@@ -20,6 +20,7 @@ var bullets_left := 6
 
 func _ready() -> void:
 	revolverPosition = revolver_sprite.position.x
+	GameManager.time_scale_changed.connect( time_scale_change )
 	pass
 
 func _process(delta: float) -> void:
@@ -38,7 +39,7 @@ func _process(delta: float) -> void:
 			ray_2.look_at( ray_2.global_position + reflected)
 			
 			aim_line.set_point_position(1, ray1_pos - aim_line.global_position)
-			aim_line.set_point_position(2, ray_2.global_position + reflected * 500)
+			aim_line.set_point_position(2, ray_2.global_position + reflected * 500 - aim_line.global_position)
 		else:
 			aim_line.set_point_position(1, aim_direction * 500)
 			aim_line.set_point_position(2, aim_direction * 500)
@@ -72,6 +73,9 @@ func shoot() -> void:
 	count_down_interface.run_down_animation(bullets_left)
 	await revolver_sprite.animation_finished
 	revolver_sprite.play("idle")
+
+func time_scale_change(new_value : float):
+	revolver_sprite.speed_scale = 1.0 / new_value
 
 
 func _physics_process(delta: float) -> void:

@@ -1,7 +1,7 @@
 class_name Bullet
 extends Area2D
 
-@export var speed : float = 5
+@export var speed : float = 7
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 var normal : Vector2
@@ -18,7 +18,7 @@ func setup(_direction : Vector2):
 	set_process(true)
 
 func _physics_process(delta: float) -> void:
-	global_position += direction * speed
+	global_position += direction * speed * delta
 	normal = ray_cast_2d.get_collision_normal()
 
 func collision_entered(node : Node2D):
